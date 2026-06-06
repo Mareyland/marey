@@ -1,5 +1,5 @@
 # Tools
-cxx = g++
+cxx = clang++
 ld = ld
 
 # Flags
