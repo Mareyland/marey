@@ -1,6 +1,7 @@
 #ifndef MAREY_CORE_KERNEL_H
 #define MAREY_CORE_KERNEL_H
 #include "ModuleManager.h"
+#include "CoreModule.h"
 
 namespace marey::Core {
 class Kernel final {
@@ -13,12 +14,10 @@ public:
     Kernel(Kernel &&) = delete;
     Kernel& operator=(Kernel &&) = delete;
 
-    void run() {
-
-    }
+    void run();
 
 private:
-
+    ModuleManager moduleManager{};
 };
 }
 #endif // MAREY_CORE_KERNEL_H

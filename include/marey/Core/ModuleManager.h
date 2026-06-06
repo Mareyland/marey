@@ -1,6 +1,7 @@
 #ifndef MAREY_CORE_MODULEMANAGER_H
 #define MAREY_CORE_MODULEMANAGER_H
 #include <utility>
+
 namespace marey::Core {
 class ModuleManager final {
 public:
@@ -12,25 +13,24 @@ public:
     ModuleManager& operator=(const ModuleManager &) = delete;
     ModuleManager& operator=(ModuleManager &&) = delete;
 
-
     template <typename... Modules>
-    void run(Modules... modules) {
-        this->startupModule(std::forward<Modules>(modules)...);
+    void run(Modules &&... modules) {
+        this->startupModule(modules...);
 
         while (true) {
-            this->updateModule(std::forward<Modules>(modules)...);
+            this->updateModule(modules...);
         }
     }
 
 private:
     template <typename Module>
-    void startupModule(Module module) {
-        module->startup();
+    void startupModule(Module &module) {
+        module.startup();
     }
 
     template <typename Module>
-    void updateModule(Module module) {
-        module->update();
+    void updateModule(Module &module) {
+        module.update();
     }
 };
 }

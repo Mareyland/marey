@@ -6,23 +6,28 @@ class ModuleBase {
 public:
     ~ModuleBase() = default;
 
+    ModuleBase &operator=(ModuleBase &&) = default;
+
     ModuleBase(const ModuleBase &) = delete;
     ModuleBase(ModuleBase &&) = delete;
     ModuleBase &operator=(const ModuleBase &) = delete;
-    ModuleBase &operator=(ModuleBase &&) = delete;
 
     void startup() {
-        derived().startup();
+        getDerived().startup();
     }
 
-    void tick() {
-        derived().tick();
+    void update() {
+        getDerived().update();
     }
 
 protected:
     ModuleBase() = default;
 
-    [[nodiscard]] Derived &derived() {
+    [[nodiscard]] Derived &getDerived() {
+        return static_cast<Derived &>(*this);
+    }
+
+    [[nodiscard]] const Derived &getDerived() const {
         return static_cast<Derived &>(*this);
     }
 };
