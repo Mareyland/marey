@@ -2,6 +2,8 @@
 
 extern "C" {
 int kernelMain() {
+    // marey::Core::Kernel{}.run();
+
     return 0;
 }
 }
