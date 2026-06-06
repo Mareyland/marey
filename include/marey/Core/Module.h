@@ -2,14 +2,14 @@
 #define MAREY_CORE_MODULE_H
 namespace marey::Core {
 template <typename Derived>
-class Module {
+class ModuleBase {
 public:
-    ~Module() = default;
+    ~ModuleBase() = default;
 
-    Module(const Module &) = delete;
-    Module(Module &&) = delete;
-    Module &operator=(const Module &) = delete;
-    Module &operator=(Module &&) = delete;
+    ModuleBase(const ModuleBase &) = delete;
+    ModuleBase(ModuleBase &&) = delete;
+    ModuleBase &operator=(const ModuleBase &) = delete;
+    ModuleBase &operator=(ModuleBase &&) = delete;
 
     void startup() {
         derived().startup();
@@ -20,7 +20,7 @@ public:
     }
 
 protected:
-    Module() = default;
+    ModuleBase() = default;
 
     [[nodiscard]] Derived &derived() {
         return static_cast<Derived &>(*this);

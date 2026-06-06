@@ -3,7 +3,7 @@
 #include "Module.h"
 
 namespace marey::Core {
-class CoreModule final : public Module {
+class CoreModule final : public ModuleBase<CoreModule> {
 public:
     CoreModule() = default;
     ~CoreModule() = default;
