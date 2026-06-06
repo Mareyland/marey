@@ -7,7 +7,7 @@ cxxflags = -m32 -ffreestanding -nostdlib -fno-exceptions -fno-rtti -fno-pie
 ldflags = -m elf_i386 -T linker.ld -nostdlib
 
 # Files
-src = Source/Kernel/main.cpp
+src = main/main.cpp
 obj = kernel.o
 elf = kernel.elf
 iso = grub.iso

@@ -1,9 +1,33 @@
-// #include <marey/Core/Kernel.h>
-
 extern "C" {
-int kernelMain() {
-    // marey::Core::Kernel{}.run();
+// Multiboot header
+__attribute__((section(".multiboot"), used, aligned(4)))
+const unsigned int multiboot_header[] = {
+    0x1BADB002,
+    0x0,
+    (unsigned int)(-(0x1BADB002))
+};
 
-    return 0;
+volatile char* video = (volatile char*)0xb8000;
+
+void print(const char* str) {
+    int i = 0;
+    while (str[i]) {
+        video[i * 2] = str[i];
+        video[i * 2 + 1] = 0x07;
+        i++;
+    }
+}
+
+void _start() {
+
+  print("Hello marcel");
+
+//    video[0] = 'H';
+//    video[1] = 0x07;
+
+
+    while (1) {
+        asm volatile("hlt");
+    }
 }
 }
