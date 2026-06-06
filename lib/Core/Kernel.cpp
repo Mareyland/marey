@@ -2,7 +2,7 @@
 
 namespace marey::Core {
 /*
-* void Kernel::run() {
+void Kernel::run() {
 
 }
 */
