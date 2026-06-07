@@ -16,15 +16,6 @@ public:
     ModuleManager& operator=(const ModuleManager &) = delete;
     ModuleManager& operator=(ModuleManager &&) = delete;
 
-    template <typename Module>
-    static void startupModule(Module &module) {
-        module.startup();
-    }
-
-    template <typename Module>
-    static void updateModule(Module &module) {
-        module.update();
-    }
 
     template <typename... Modules>
     static void run(Modules &&... modules) {
@@ -35,6 +26,15 @@ public:
         }
     }
 private:
+    template <typename  Module>
+    static void startupModule(Module &module) {
+        module.startup();
+    }
+
+    template <typename Module>
+    static void updateModule(Module &module) {
+        module.update();
+    }
 };
 }
 #endif // MAREY_CORE_MODULEMANAGER_H
