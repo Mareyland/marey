@@ -16,8 +16,6 @@ public:
     void run();
 
 private:
-    void greedBack();
-
     ModuleManager moduleManager{};
 };
 }
