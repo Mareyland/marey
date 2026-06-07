@@ -12,7 +12,7 @@ inline const unsigned int multiboot_header[] = {
 };
 
 inline void _start() {
-    ::kernelMain();
+    kernelMain();
 
     while (1) {
         asm volatile("hlt");

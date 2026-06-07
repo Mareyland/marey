@@ -1,7 +1,6 @@
 #ifndef MAREY_IO_IOMANAGER_H
 #define MAREY_IO_IOMANAGER_H
 #include <marey/Core/CrtpBase.h>
-#include <string_view>
 
 namespace marey::Io {
 class IoManager final {
@@ -14,7 +13,7 @@ public:
     IoManager &operator=(const IoManager &) = delete;
     IoManager &operator=(IoManager &&) = delete;
 
-    static void print(std::string_view message);
+    static void print(const char *message);
 };
 }
 #endif // MAREY_IO_IOMANAGER_H

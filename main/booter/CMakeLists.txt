@@ -16,7 +16,7 @@ set(LD_FLAGS
   -nostdlib
 )
 
-add_library(${PROJECT_NAME} OBJECT
+add_library(${PROJECT_NAME}
   main.cpp
 )
 
@@ -29,5 +29,5 @@ target_link_options(${PROJECT_NAME} PRIVATE
 )
 
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-  COMMAND sh $(cp $in iso/boot/ && grub-mkrescue -o $out iso && qemu-system-x86_64 -cdrom $in)
+  COMMAND cp $in iso/boot/ && grub-mkrescue -o $out iso && qemu-system-x86_64 -cdrom $in
 )
