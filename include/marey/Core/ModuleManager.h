@@ -11,7 +11,6 @@ public:
     ModuleManager& operator=(const ModuleManager &) = delete;
     ModuleManager& operator=(ModuleManager &&) = delete;
 
-
     template <typename... Modules>
     static void run(Modules &&... modules) {
         ModuleManager::startupModule(modules...);
