@@ -3,6 +3,7 @@
 #include "ModuleBase.h"
 
 #include <concepts>
+#include <type_traits>
 
 namespace marey::Core {
 class ModuleManager final {
@@ -15,29 +16,25 @@ public:
     ModuleManager& operator=(const ModuleManager &) = delete;
     ModuleManager& operator=(ModuleManager &&) = delete;
 
-    template <typename... Modules>
-    void run(Modules &&... modules) {
-        this->startupModule(modules...);
-
-        while (true) {
-            this->updateModule(modules...);
-        }
-    }
-
-private:
     template <typename Module>
-    void startupModule(Module &module)
-        requires std::derived_from<Module, ModuleBase<Module>>
-    {
+    static void startupModule(Module &module) {
         module.startup();
     }
 
     template <typename Module>
-    void updateModule(Module &module)
-        requires std::derived_from<Module, ModuleBase<Module>>
-    {
+    static void updateModule(Module &module) {
         module.update();
     }
+
+    template <typename... Modules>
+    static void run(Modules &&... modules) {
+        ModuleManager::startupModule(modules...);
+
+        while (true) {
+            ModuleManager::updateModule(modules...);
+        }
+    }
+private:
 };
 }
 #endif // MAREY_CORE_MODULEMANAGER_H
