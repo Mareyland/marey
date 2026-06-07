@@ -3,7 +3,6 @@
 #include "ModuleBase.h"
 
 #include <concepts>
-#include <meta>
 
 namespace marey::Core {
 class ModuleManager final {
