@@ -10,17 +10,12 @@ public:
 
     CoreModule &operator=(CoreModule &&) = default;
 
-    CoreModule(const CoreModule &) = delete;
     CoreModule(CoreModule &&) = delete;
     CoreModule &operator=(const CoreModule &) = delete;
+    CoreModule(const CoreModule &) = delete;
 
-    void startup() {
-
-    }
-
-    void update() {
-
-    }
+    void startup();
+    void update();
 };
 }
 #endif // MAREY_CORE_COREMODULE_H
