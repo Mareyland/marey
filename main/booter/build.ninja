@@ -1,19 +1,19 @@
 # Tools
 cxx = clang++
-ld = lld
+ld = ld
 
 # Flags
 cxxflags = -m32 -ffreestanding -nostdlib -fno-exceptions -fno-rtti -fno-pie
 ldflags = -m elf_i386 -T linker.ld -nostdlib
 
 # Files
-src = main/main.cpp
+src = main.cpp
 obj = kernel.o
 elf = kernel.elf
 iso = grub.iso
 
 rule compile
-  command = cmake . -B build && cmake --build build && $cxx $cxxflags -c $in -o $out
+  command = $cxx $cxxflags -c $in -o $out
   description = Compiling $in
 
 rule link
