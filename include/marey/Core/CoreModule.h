@@ -1,6 +1,6 @@
 #ifndef MAREY_CORE_COREMODULE_H
 #define MAREY_CORE_COREMODULE_H
-#include "Module.h"
+#include "ModuleBase.h"
 
 namespace marey::Core {
 class CoreModule final : public ModuleBase<CoreModule> {

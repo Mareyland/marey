@@ -1,7 +1,6 @@
 #ifndef MAREY_CORE_KERNEL_H
 #define MAREY_CORE_KERNEL_H
 #include "ModuleManager.h"
-#include "CoreModule.h"
 
 namespace marey::Core {
 class Kernel final {
@@ -17,6 +16,8 @@ public:
     void run();
 
 private:
+    void greedBack();
+
     ModuleManager moduleManager{};
 };
 }

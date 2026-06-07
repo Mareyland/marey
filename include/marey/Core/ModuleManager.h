@@ -1,6 +1,9 @@
 #ifndef MAREY_CORE_MODULEMANAGER_H
 #define MAREY_CORE_MODULEMANAGER_H
-#include <utility>
+#include "ModuleBase.h"
+
+#include <concepts>
+#include <meta>
 
 namespace marey::Core {
 class ModuleManager final {
@@ -24,12 +27,16 @@ public:
 
 private:
     template <typename Module>
-    void startupModule(Module &module) {
+    void startupModule(Module &module)
+        requires std::derived_from<Module, ModuleBase<Module>>
+    {
         module.startup();
     }
 
     template <typename Module>
-    void updateModule(Module &module) {
+    void updateModule(Module &module)
+        requires std::derived_from<Module, ModuleBase<Module>>
+    {
         module.update();
     }
 };

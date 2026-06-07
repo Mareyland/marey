@@ -13,7 +13,7 @@ elf = kernel.elf
 iso = grub.iso
 
 rule compile
-  command = $cxx $cxxflags -c $in -o $out
+  command = cmake . -B build && cmake --build build && $cxx $cxxflags -c $in -o $out
   description = Compiling $in
 
 rule link
