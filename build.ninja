@@ -1,6 +1,6 @@
 # Tools
 cxx = clang++
-ld = ld
+ld = lld
 
 # Flags
 cxxflags = -m32 -ffreestanding -nostdlib -fno-exceptions -fno-rtti -fno-pie
