@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(Io)
+project(LowLevel)
 
 include(${CMAKE_SOURCE_DIR}/cmake/stdset.cmake)
 
