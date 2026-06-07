@@ -1,8 +1,10 @@
 #ifndef MAREY_CORE_MODULE_H
 #define MAREY_CORE_MODULE_H
+#include "marey/Core/CrtpBase.h"
+
 namespace marey::Core {
 template <typename Derived>
-class ModuleBase {
+class ModuleBase : public CrtpBase {
 public:
     ~ModuleBase() = default;
 
@@ -13,24 +15,15 @@ public:
     ModuleBase &operator=(const ModuleBase &) = delete;
 
     void startup() {
-        getDerived().startup();
+        getDerived<Derived>().startup();
     }
 
     void update() {
-        getDerived().update();
+        getDerived<Derived>().update();
     }
 
 protected:
     ModuleBase() = default;
-
-private:
-    [[nodiscard]] Derived &getDerived() {
-        return static_cast<Derived &>(*this);
-    }
-
-    [[nodiscard]] const Derived &getDerived() const {
-        return static_cast<Derived &>(*this);
-    }
 };
 }
 #endif // MAREY_CORE_MODULE_H
