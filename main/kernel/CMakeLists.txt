@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(booter)
+project(kernel)
 
 set(CXX_FLAGS
   -m32
@@ -29,5 +29,9 @@ target_link_options(${PROJECT_NAME} PRIVATE
 )
 
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-  COMMAND cp $in iso/boot/ && grub-mkrescue -o $out iso && qemu-system-x86_64 -cdrom $in
+  COMMAND ${CMAKE_COMMAND} -E copy
+          $<TARGET_FILE:${PROJECT_NAME}>
+          ${CMAKE_SOURCE_DIR}/iso/boot/${PROJECT_NAME}
+  COMMAND grub-mkrescue -o os.iso iso
+  COMMAND qemu-system-x86_64 -cdrom os.iso
 )
