@@ -1,10 +1,5 @@
 #ifndef MAREY_CORE_MODULEMANAGER_H
 #define MAREY_CORE_MODULEMANAGER_H
-#include "ModuleBase.h"
-
-#include <concepts>
-#include <type_traits>
-
 namespace marey::Core {
 class ModuleManager final {
 public:
@@ -25,6 +20,7 @@ public:
             ModuleManager::updateModule(modules...);
         }
     }
+
 private:
     template <typename  Module>
     static void startupModule(Module &module) {
