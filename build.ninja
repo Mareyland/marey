@@ -4,7 +4,7 @@ ld = ld
 
 # Flags
 cxxflags = -m32 -ffreestanding -nostdlib -fno-exceptions -fno-rtti -fno-pie
-ldflags = -m elf_i386 -T linker.ld -nostdlib
+ldflags = -m elf_i386 -T arch/x86/linker.ld -nostdlib
 
 # Files
 src = main/main.cpp
